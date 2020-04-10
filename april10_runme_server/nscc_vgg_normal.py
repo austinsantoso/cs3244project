@@ -1,3 +1,4 @@
+# coding=utf-8
 from keras.preprocessing.image import ImageDataGenerator
 train_datagen =  ImageDataGenerator(rescale=1.0/255, 
                                     rotation_range=15,
