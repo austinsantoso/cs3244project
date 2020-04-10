@@ -157,13 +157,13 @@ model.compile(loss=keras.losses.categorical_crossentropy,
               optimizer='adam', metrics=['accuracy'])
 
 from keras.callbacks import EarlyStopping, ReduceLROnPlateau, ModelCheckpoint
-filepath = 'weight_VGG19.h5'
+filepath = 'weight_VGG19_restore.h5'
 checkpoint = ModelCheckpoint(filepath, monitor='val_acc', 
                         verbose=1, save_best_only=True, mode='max')
 
 early = EarlyStopping(monitor='val_loss', 
                       mode='min', 
-                      patience=4)
+                      patience=4, restore_best_weights=True)
 callbacks_list = [checkpoint, early]
 
 history = model.fit_generator(train_gen,

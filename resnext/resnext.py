@@ -283,13 +283,13 @@ test_gen = test_datagen.flow_from_directory(directory='../train_copy/test/',
                                             seed=0)
 
 from keras.callbacks import EarlyStopping, ReduceLROnPlateau, ModelCheckpoint
-filepath = 'weight_ResNext_100.h5'
+filepath = 'weight_ResNext_100_restore.h5'
 checkpoint = ModelCheckpoint(filepath, monitor='val_acc', 
                         verbose=1, save_best_only=True, mode='max')
 
 early = EarlyStopping(monitor='val_loss', 
                       mode='min', 
-                      patience=4)
+                      patience=4, resotre_best_weights=True)
 callbacks_list = [checkpoint, early]
 
 history = model.fit_generator(train_gen,
