@@ -14,7 +14,7 @@ CHOOSE THE DIRECTORY OF IMAGE
 picture_main_dir = '../custom_training_data/'
 # picture_main_dir = '../custom_training_data_edge/'
 
-filename_extension= '_resNext_normal'
+filename_extension= '_resNext_normal_tembusu'
 
 nrows = 100
 ncolumns = 100

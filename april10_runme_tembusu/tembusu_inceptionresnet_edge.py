@@ -14,7 +14,7 @@ CHOOSE THE DIRECTORY OF IMAGE
 # picture_main_dir = '../custom_training_data/'
 picture_main_dir = '../custom_training_data_edge/'
 
-filename_extension= '_inceptionresnet_edge'
+filename_extension= '_inceptionresnet_edge_tembusu'
 
 nrows = 100
 ncolumns = 100
