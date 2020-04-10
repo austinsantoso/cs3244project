@@ -1,0 +1,13 @@
+#!/bin/bash
+#PBS -k oe
+#PBS -q gpu
+#PBS -j oe
+#PBS -l select=1:ncpus=24:mem=96GB
+#PBS -l walltime=48:00:00
+#PBS -N inceptionresnet2_299_test_gpu_1
+#PBS -P Personal
+
+cd ${PBS_O_WORKDIR}
+
+module load tensorflow/1.0+keras
+python inceptionresnet2_299.py > inceptionresnet2_299_test_gpu_1_output.txt
