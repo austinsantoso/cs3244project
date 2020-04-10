@@ -572,7 +572,7 @@ def incresC(x,scale,name=None):
                       arguments={'scale': scale},
                       name=name+'act_saling')([x, filt_exp_1x1])
     return final_lay
-def InceptionResNet2(input_shape, nclass):
+def InceptionResNet2(input_shape=(100,100,1), nclass=24):
     img_input = Input(shape=input_shape)
 
     x = conv2d(img_input,32,3,2,'valid',True,name='conv1')
@@ -687,7 +687,7 @@ SELECT YOUR MODEL
 #model = VGG19(input_shape,nclass)
 #model = CaffeNet(input_shape,nclass)
 # model = ResNeXt50(input_shape=input_shape, classes=nclass)
-model = InceptionResNet2(input_shape=input_shape, classes=nclass)
+model = InceptionResNet2(input_shape=input_shape, nclass=nclass)
 
 history = model.fit_generator(train_gen,
                               steps_per_epoch=nclass*1000/batch_size,          
