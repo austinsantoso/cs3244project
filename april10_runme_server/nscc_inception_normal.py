@@ -687,7 +687,7 @@ SELECT YOUR MODEL
 #model = VGG19(input_shape,nclass)
 #model = CaffeNet(input_shape,nclass)
 # model = ResNeXt50(input_shape=input_shape, classes=nclass)
-model = InceptionResNet2(input_shape=input_shape, classes=nclass)
+model = InceptionResNet2(input_shape=input_shape, nclass=nclass)
 
 history = model.fit_generator(train_gen,
                               steps_per_epoch=nclass*1000/batch_size,          
