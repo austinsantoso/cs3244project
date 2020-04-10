@@ -4,5 +4,7 @@
 /picture_dataset_old
 /WLASL
 /custom training
+/custom_training_data
+/custom_training_data_edge
 
 *.h5
