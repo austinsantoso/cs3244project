@@ -696,7 +696,7 @@ history = model.fit_generator(train_gen,
                               epochs=40, verbose=1,
                               callbacks=callbacks_list)
 
-model.save_model('model' + filename_extension + '.h5')
+model.save('model' + filename_extension + '.h5')
 
 
 """
