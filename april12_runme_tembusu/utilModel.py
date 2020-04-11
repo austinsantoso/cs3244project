@@ -205,7 +205,7 @@ from_paper
 ====================================================================================
 """
 
-def from_paper(input_shape=(100,100,1),nclass=24):
+def from_paper(input_shape=(100,100,1),nclass=24, ndense=1024):
     model = Sequential()
     
     model.add(Conv2D(filters=16,
@@ -240,7 +240,7 @@ def from_paper(input_shape=(100,100,1),nclass=24):
     
     model.add(Flatten())
     
-    model.add(Dense(1024, activation='relu'))
+    model.add(Dense(ndense, activation='relu'))
     
     model.add(Dense(nclass, activation='softmax'))
     
