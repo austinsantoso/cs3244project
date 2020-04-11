@@ -103,4 +103,4 @@ VISUALISATION
 """
 import utilVisualisation
 
-utilVisualisation(history, filename_extension)
+utilVisualisation.visualize(history, filename_extension)
