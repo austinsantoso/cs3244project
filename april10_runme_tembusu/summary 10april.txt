@@ -1,0 +1,58 @@
+AS OF 1:01 PM 11 April
+
+tembusu 1
+caffenet edge
+xgpc0
+latest epoch(9) then terminate:
+loss 3.1804 acc:0.0188 cal_loss: 3.1705 val_accuracy: 0.0400
+
+tembusu 2
+caffenet normal
+xgpc2
+latest epoch(5) then terminate: 
+loss 3.1834 acc:0.0223 val_loss: 3.1812 val_accuracy: 0.000e+00
+
+tembbusu 3
+inceptionresnet edge
+xgpc3: still running
+epoch 3: loss 3.1161 acc: 0.0760 val_loss: 4.9739 val_accuracy: 0.424
+
+tembusu 4
+inceptionresnet normal
+xgpc8: havent terminate
+epoce 3: loss: 3.4255 acc: 0.0604 val_loss: 2.8625 val_accuracy: 0.0800
+
+tembusu 5
+paper edge
+xgpc10
+epoch 10 then termintate
+loss: 0.2502 acc: 0.9072 cal: 3.8904 val_accuracy 0.7732
+
+tembusu 6
+paper normal
+xgpd2
+epoch 6 terminated
+loss: 3.1803 accuracy: 0.229 val_loss 3.1696 val_accuracy: 0.0800
+
+tembusu 7
+resnext edge
+xgpd7: abis supicious
+epoch 1 still 86 hours
+loss: 6.8960 acc: 0.000e+00
+
+tembusu 8
+resnext normal
+xgpd3: still running
+epoch 5
+loss: 3.3463 accuracy 0.0417 val_loss: 3.2142 val_accuracy: 4.000e-64
+
+tembusu 9
+vgg edge
+xgpd6: still running
+epoch3:
+loss 3.1803 accuracy 0.0271 vak_loss: 3.1915 val_accuracy: 0.0800
+
+tembusu10
+vgg normal
+xgpd8
+epoch 5: loss: 3.1804 accuracy: 0.229 val_loss: 3.1718 val_accuracy: 0.0800

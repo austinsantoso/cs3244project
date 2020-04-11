@@ -12,10 +12,10 @@ test_datagen =  ImageDataGenerator(rescale=1.0/255)
 CHOOSE THE DIRECTORY OF IMAGE
 """
 # picture_main_dir = '../train_copy/'
-# picture_main_dir = '../custom_training_data/'
-picture_main_dir = '../custom_training_data_edge/'
+picture_main_dir = '../custom_training_data/'
+# picture_main_dir = '../custom_training_data_edge/'
 
-filename_extension= '_resnext_edge_tembusu'
+filename_extension= '_vgg_normal_tembusu'
 
 nrows = 100
 ncolumns = 100
@@ -82,9 +82,9 @@ nclass=24
 SELECT YOUR MODEL
 """
 # model = utilModel.from_paper(input_shape,nclass)
-#model = utilModel.VGG19(input_shape,nclass)
+model = utilModel.VGG19(input_shape,nclass)
 # model = utilModel.CaffeNet(input_shape,nclass)
-model = utilModel.ResNeXt50(input_shape=input_shape, nclass=nclass)
+# model = utilModel.ResNeXt50(input_shape=input_shape, nclass=nclass)
 # model = utilModel.InceptionResNet2(input_shape=input_shape, nclass=nclass)
 
 history = model.fit_generator(train_gen,

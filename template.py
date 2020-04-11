@@ -23,14 +23,14 @@ batch_size = 50
 
 
 train_gen = train_datagen.flow_from_directory(directory= picture_main_dir + 'train/',
-                                              target_size=(100, 100),
+                                              target_size=(nrows, ncolumns),
                                               color_mode='grayscale',
                                               batch_size=batch_size,
                                               class_mode='categorical',
                                               shuffle=False,
                                               seed=0)
 val_gen = val_datagen.flow_from_directory(directory= picture_main_dir + 'val/',
-                                          target_size=(100, 100),
+                                          target_size=(nrows, ncolumns),
                                           color_mode='grayscale',
                                           batch_size=batch_size,
                                           class_mode='categorical',
@@ -38,7 +38,7 @@ val_gen = val_datagen.flow_from_directory(directory= picture_main_dir + 'val/',
                                           seed=0)
 
 test_gen = test_datagen.flow_from_directory(directory= picture_main_dir + 'test/',
-                                            target_size=(100, 100),
+                                            target_size=(nrows, ncolumns),
                                             color_mode='grayscale',
                                             batch_size=batch_size,
                                             class_mode='categorical',
@@ -508,7 +508,7 @@ def ResNeXt50(input_shape=(100,100,1),
     return ResNet(stack_fn, False, False, 'resnext50',
                   include_top, weights,
                   input_tensor, input_shape,
-                  pooling, classes,
+                  pooling, nclass,
                   **kwargs)
 
 """
@@ -667,7 +667,7 @@ Change filepath accordingly
 from keras.callbacks import EarlyStopping, ReduceLROnPlateau, ModelCheckpoint
 filepath = 'weight' + filename_extension + '.h5'
 
-checkpoint = ModelCheckpoint(filepath, monitor='val_acc', 
+checkpoint = ModelCheckpoint(filepath, monitor='val_accuracy', 
                         verbose=1, save_best_only=True, mode='max')
 
 early = EarlyStopping(monitor='val_loss', 
@@ -705,8 +705,8 @@ VISUALISATION
 """
 import matplotlib.pyplot as plt
 
-acc = history.history['acc']
-val_acc = history.history['val_acc']
+acc = history.history['accuracy']
+val_acc = history.history['val_accuracy']
 loss = history.history['loss']
 val_loss = history.history['val_loss']
 

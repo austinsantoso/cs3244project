@@ -15,7 +15,7 @@ CHOOSE THE DIRECTORY OF IMAGE
 # picture_main_dir = '../custom_training_data/'
 picture_main_dir = '../custom_training_data_edge/'
 
-filename_extension= '_resnext_edge_tembusu'
+filename_extension= '_inceptionresnet_edge_tembusu'
 
 nrows = 100
 ncolumns = 100
@@ -84,8 +84,8 @@ SELECT YOUR MODEL
 # model = utilModel.from_paper(input_shape,nclass)
 #model = utilModel.VGG19(input_shape,nclass)
 # model = utilModel.CaffeNet(input_shape,nclass)
-model = utilModel.ResNeXt50(input_shape=input_shape, nclass=nclass)
-# model = utilModel.InceptionResNet2(input_shape=input_shape, nclass=nclass)
+# model = utilModel.ResNeXt50(input_shape=input_shape, nclass=nclass)
+model = utilModel.InceptionResNet2(input_shape=input_shape, nclass=nclass)
 
 history = model.fit_generator(train_gen,
                               steps_per_epoch=nclass*1000/batch_size,          

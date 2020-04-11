@@ -1,50 +1,3 @@
-# coding=utf-8
-from keras.preprocessing.image import ImageDataGenerator
-train_datagen =  ImageDataGenerator(rescale=1.0/255, 
-                                    rotation_range=15,
-                                    zoom_range=0.2)
-
-val_datagen =  ImageDataGenerator(rescale=1.0/255)
-
-test_datagen =  ImageDataGenerator(rescale=1.0/255)
-
-"""
-CHOOSE THE DIRECTORY OF IMAGE
-"""
-# picture_main_dir = '../train_copy/'
-picture_main_dir = '../custom_training_data/'
-# picture_main_dir = '../custom_training_data_edge/'
-
-filename_extension= '_vgg_normal_tembusu'
-
-nrows = 100
-ncolumns = 100
-batch_size = 50
-
-
-train_gen = train_datagen.flow_from_directory(directory= picture_main_dir + 'train/',
-                                              target_size=(100, 100),
-                                              color_mode='grayscale',
-                                              batch_size=batch_size,
-                                              class_mode='categorical',
-                                              shuffle=False,
-                                              seed=0)
-val_gen = val_datagen.flow_from_directory(directory= picture_main_dir + 'val/',
-                                          target_size=(100, 100),
-                                          color_mode='grayscale',
-                                          batch_size=batch_size,
-                                          class_mode='categorical',
-                                          shuffle=False,
-                                          seed=0)
-
-test_gen = test_datagen.flow_from_directory(directory= picture_main_dir + 'test/',
-                                            target_size=(100, 100),
-                                            color_mode='grayscale',
-                                            batch_size=batch_size,
-                                            class_mode='categorical',
-                                            shuffle=False,
-                                            seed=0)
-
 """
 MODEL
 ====================================================================================
@@ -492,12 +445,12 @@ def ResNet(stack_fn,
     return model
 
 
-def ResNeXt50(include_top=True,
+def ResNeXt50(input_shape=(100,100,1),
+			  nclass=24,
+			  include_top=True,
               weights=None,
               input_tensor=None,
-              input_shape=(100,100,1),
               pooling=None,
-              classes=24,
               **kwargs):
     def stack_fn(x):
         x = stack3(x, 128, 3, stride1=1, name='conv2')
@@ -508,7 +461,7 @@ def ResNeXt50(include_top=True,
     return ResNet(stack_fn, False, False, 'resnext50',
                   include_top, weights,
                   input_tensor, input_shape,
-                  pooling, classes,
+                  pooling, nclass,
                   **kwargs)
 
 """
@@ -572,7 +525,7 @@ def incresC(x,scale,name=None):
                       arguments={'scale': scale},
                       name=name+'act_saling')([x, filt_exp_1x1])
     return final_lay
-def InceptionResNet2(input_shape, nclass):
+def InceptionResNet2(input_shape=(100,100,1), nclass=24):
     img_input = Input(shape=input_shape)
 
     x = conv2d(img_input,32,3,2,'valid',True,name='conv1')
@@ -656,73 +609,3 @@ def InceptionResNet2(input_shape, nclass):
     model.compile(loss='categorical_crossentropy',
                   optimizer='adam', metrics=['accuracy'])
     return model
-
-
-"""
-TRAINING
-==================================================================================
-Change filepath accordingly
-"""
-
-from keras.callbacks import EarlyStopping, ReduceLROnPlateau, ModelCheckpoint
-filepath = 'weight' + filename_extension + '.h5'
-
-checkpoint = ModelCheckpoint(filepath, monitor='val_acc', 
-                        verbose=1, save_best_only=True, mode='max')
-
-early = EarlyStopping(monitor='val_loss', 
-                      mode='min', 
-                      patience=4, restore_best_weights=True)
-
-callbacks_list = [checkpoint, early]
-
-
-input_shape=(nrows,ncolumns,1)
-nclass=24
-
-"""
-SELECT YOUR MODEL
-"""
-# model = from_paper(input_shape,nclass)
-model = VGG19(input_shape,nclass)
-#model = CaffeNet(input_shape,nclass)
-# model = ResNeXt50(input_shape=input_shape, classes=nclass)
-# model = InceptionResNet2(input_shape=input_shape, classes=nclass)
-
-history = model.fit_generator(train_gen,
-                              steps_per_epoch=nclass*1000/batch_size,          
-                              validation_data=val_gen,
-                              validation_steps=batch_size, 
-                              epochs=40, verbose=1,
-                              callbacks=callbacks_list)
-
-model.save('model' + filename_extension + '.h5')
-
-
-"""
-VISUALISATION
-================================================================================
-"""
-import matplotlib.pyplot as plt
-
-acc = history.history['acc']
-val_acc = history.history['val_acc']
-loss = history.history['loss']
-val_loss = history.history['val_loss']
-
-epochs = range(1, len(acc)+1)
-
-plt.plot(epochs, acc, 'b', label='Training accuracy')
-plt.plot(epochs, val_acc, 'r', label='Validation accuracy')
-plt.title('Training and Validation Accuracy')
-plt.legend()
-
-plt.figure()
-plt.plot(epochs, loss, 'b', label='Training loss')
-plt.plot(epochs, val_loss, 'r', label='Validation loss')
-plt.title('Training and Validation Loss')
-plt.legend()
-
-plt.show()
-
-plt.savefig('accuracy_loss' + filename_extension + '.png')
