@@ -204,8 +204,54 @@ def VGG19(input_shape=(100,100,1),nclass=24):
 from_paper
 ====================================================================================
 """
+def from_paper(input_shape=(100,100,1),nclass=24):
+    model = Sequential()
+    
+    model.add(Conv2D(filters=16,
+                     input_shape=input_shape,
+                     kernel_size=(3, 3),
+                     #activation='relu',
+                     padding='same'))
+    model.add(BatchNormalization())
+    model.add(Activation('relu'))
+    
+    model.add(MaxPooling2D(pool_size=(2, 2)))
+    
+    model.add(Conv2D(filters=32,
+                     kernel_size=(3, 3),
+                     #activation='relu',
+                     padding='same'))
+    model.add(BatchNormalization())
+    model.add(Activation('relu'))
+    
+    model.add(MaxPooling2D(pool_size=(5, 5)))
+    
+    model.add(Conv2D(filters=64,
+                     kernel_size=(3, 3),
+                     #activation='relu',
+                     padding='same'))
+    model.add(BatchNormalization())
+    model.add(Activation('relu'))
+    
+    model.add(MaxPooling2D(pool_size=(5, 5)))
+    
+    model.add(Dropout(0.2))
+    
+    model.add(Flatten())
+    
+    model.add(Dense(1024, activation='relu'))
+    
+    model.add(Dense(nclass, activation='softmax'))
+    
+    model.summary()
+    
+    model.compile(loss='categorical_crossentropy',
+                  optimizer='adam', metrics=['accuracy'])
+    
+    return model
 
-def from_paper(input_shape=(100,100,1),nclass=24, ndense=1024):
+
+def from_paperNew(input_shape=(100,100,1),nclass=24, ndense=1024):
     model = Sequential()
     
     model.add(Conv2D(filters=16,

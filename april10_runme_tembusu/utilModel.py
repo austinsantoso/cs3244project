@@ -211,7 +211,7 @@ def from_paper(input_shape=(100,100,1),nclass=24):
     model.add(Conv2D(filters=16,
                      input_shape=input_shape,
                      kernel_size=(3, 3),
-                     #activation='relu',
+                     activation='relu',
                      padding='same'))
     model.add(BatchNormalization())
     model.add(Activation('relu'))
@@ -220,7 +220,7 @@ def from_paper(input_shape=(100,100,1),nclass=24):
     
     model.add(Conv2D(filters=32,
                      kernel_size=(3, 3),
-                     #activation='relu',
+                     activation='relu',
                      padding='same'))
     model.add(BatchNormalization())
     model.add(Activation('relu'))
@@ -229,7 +229,7 @@ def from_paper(input_shape=(100,100,1),nclass=24):
     
     model.add(Conv2D(filters=64,
                      kernel_size=(3, 3),
-                     #activation='relu',
+                     activation='relu',
                      padding='same'))
     model.add(BatchNormalization())
     model.add(Activation('relu'))

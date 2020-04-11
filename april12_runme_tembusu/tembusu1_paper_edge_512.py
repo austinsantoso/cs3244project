@@ -81,7 +81,7 @@ nclass=24
 """
 SELECT YOUR MODEL
 """
-model = utilModel.from_paper(input_shape,nclass, ndense=512)
+model = utilModel.from_paperNew(input_shape,nclass, ndense=512)
 #model = utilModel.VGG19(input_shape,nclass)
 # model = utilModel.CaffeNet(input_shape,nclass)
 # model = utilModel.ResNeXt50(input_shape=input_shape, nclass=nclass)

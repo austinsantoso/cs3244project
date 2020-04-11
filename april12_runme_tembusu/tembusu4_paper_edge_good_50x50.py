@@ -15,10 +15,10 @@ CHOOSE THE DIRECTORY OF IMAGE
 # picture_main_dir = '../custom_training_data/'
 picture_main_dir = '../custom_training_data_edge/'
 
-filename_extension= '_paper_edge_tembusu_1024'
+filename_extension= '_paper_edge_tembusu_good_50x50'
 
-nrows = 100
-ncolumns = 100
+nrows = 50
+ncolumns = 50
 batch_size = 50
 
 
@@ -81,7 +81,7 @@ nclass=24
 """
 SELECT YOUR MODEL
 """
-model = utilModel.from_paperNew(input_shape,nclass, ndense=1024)
+model = utilModel.from_paper(input_shape,nclass)
 #model = utilModel.VGG19(input_shape,nclass)
 # model = utilModel.CaffeNet(input_shape,nclass)
 # model = utilModel.ResNeXt50(input_shape=input_shape, nclass=nclass)
