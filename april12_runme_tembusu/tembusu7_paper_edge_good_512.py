@@ -130,7 +130,7 @@ nclass=24
 """
 SELECT YOUR MODEL
 """
-model = from_paper(input_shape,nclass, ndense=2048)
+model = from_paper(input_shape,nclass)
 
 
 history = model.fit_generator(train_gen,

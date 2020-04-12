@@ -1,5 +1,4 @@
 run:
-	python tembusu4_paper_edge_good_50x50.py 
 	python tembusu5_paper_edge_good_dropout_0_0.py 
 	python tembusu6_paper_edge_good_dropout_0_4.py 
 	python tembusu7_paper_edge_good_512.py 

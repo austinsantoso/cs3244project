@@ -56,7 +56,7 @@ MODEL
 ====================================================================================
 Done in utilMode.py
 """
-def from_paper(input_shape=(100,100,1),nclass=24, ):
+def from_paper(input_shape=(100,100,1),nclass=24):
     model = Sequential()
     
     model.add(Conv2D(filters=16,
@@ -130,7 +130,7 @@ nclass=24
 """
 SELECT YOUR MODEL
 """
-model = from_paper(input_shape,nclass, ndense=2048)
+model = from_paper(input_shape,nclass)
 
 
 history = model.fit_generator(train_gen,
