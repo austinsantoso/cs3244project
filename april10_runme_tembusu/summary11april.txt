@@ -1,5 +1,8 @@
 on 11 april 4:52 pm
 training done for the following
+This was done to discover which of the following models
+give us the best accuracy
+and we also test does using edge or picture only matter
 
 #######################################################################################
 paper edge

@@ -1,0 +1,2 @@
+Today we check whether the model gives the best accuraacy given patience = 4
+now we try with patience = 40, or simply no early stopping since we have 40 epochs
