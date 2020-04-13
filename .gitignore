@@ -8,3 +8,5 @@
 /custom_training_data_edge
 
 *.h5
+*.png
+*.csv
