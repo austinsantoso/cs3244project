@@ -1,0 +1,5 @@
+run:
+	python tembusu1_original_paper_40_epoch.py 
+	python tembusu2_original_paper_zoom_0_3.py
+	python tembusu3_original_paper_optimizer_sgd.py
+	python tembusu4_original_paper_two_dense_1024.py
