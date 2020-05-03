@@ -87,12 +87,21 @@ model = utilModel.from_paper(input_shape,nclass)
 # model = utilModel.ResNeXt50(input_shape=input_shape, nclass=nclass)
 # model = utilModel.InceptionResNet2(input_shape=input_shape, nclass=nclass)
 
+import time
+start_time = time.time()
+
 history = model.fit_generator(train_gen,
                               steps_per_epoch=nclass*1000/batch_size,          
                               validation_data=val_gen,
                               validation_steps=batch_size, 
                               epochs=40, verbose=1,
                               callbacks=callbacks_list)
+
+end_time = time.time()
+
+f = open("./output/time" + filename_extension + ".txt","w+")
+f.write("time for " + filename_extension + " is %d seconds" % (end_time-end_time))
+f.close()
 
 model.save('model' + filename_extension + '.h5')
 
