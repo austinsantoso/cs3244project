@@ -94,7 +94,7 @@ history = model.fit_generator(train_gen,
                               steps_per_epoch=nclass*1000/batch_size,          
                               validation_data=val_gen,
                               validation_steps=batch_size, 
-                              epochs=40, verbose=1,
+                              epochs=4, verbose=1,
                               callbacks=callbacks_list)
 
 end_time = time.time()
