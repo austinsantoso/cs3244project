@@ -100,7 +100,7 @@ history = model.fit_generator(train_gen,
 end_time = time.time()
 
 f = open("./output/time" + filename_extension + ".txt","w+")
-f.write("time for " + filename_extension + " is %d seconds" % (end_time-start))
+f.write("time for " + filename_extension + " is %d seconds" % (end_time-start_time))
 f.close()
 
 model.save('model' + filename_extension + '.h5')
